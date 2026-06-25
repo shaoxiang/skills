@@ -24,24 +24,15 @@ def main() -> int:
         fail(f"Skill directory not found: {src}")
 
     repo_root = src.parents[1]
+    validate_script = repo_root / "scripts" / "validate_skill.py"
+    result = subprocess.run([sys.executable, str(validate_script), str(src)], capture_output=True, text=True)
+    if result.returncode != 0:
+        print(result.stderr, file=sys.stderr)
+        fail(f"Validation failed for {src.name}")
+
     with tempfile.TemporaryDirectory() as tmp:
         dest = Path(tmp) / src.name
         shutil.copytree(src, dest)
-
-        # Run local tests if any.
-        tests_dir = dest / "tests"
-        if tests_dir.is_dir():
-            result = subprocess.run(
-                [sys.executable, "-m", "pytest", str(tests_dir), "-q"],
-                cwd=dest,
-                capture_output=True,
-                text=True,
-            )
-            if result.returncode != 0:
-                print(result.stdout)
-                print(result.stderr, file=sys.stderr)
-                fail(f"Tests failed for {src.name}")
-
         print(f"INSTALL DRY-RUN PASS: {src.name}")
     return 0
 
