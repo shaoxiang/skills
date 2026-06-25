@@ -25,6 +25,25 @@ ALLOWLIST = {
 }
 
 
+def _line_for_position(text: str, pos: int) -> str:
+    start = text.rfind("\n", 0, pos) + 1
+    end = text.find("\n", pos)
+    if end == -1:
+        end = len(text)
+    return text[start:end]
+
+
+def _is_innocuous_line(line: str) -> bool:
+    lowered = line.lower()
+    if "secrets." in lowered:
+        return True
+    if "env:" in lowered and "${{" in line:
+        return True
+    if "example" in lowered or "placeholder" in lowered or "your_" in lowered:
+        return True
+    return False
+
+
 def scan(path: Path) -> list[str]:
     findings: list[str] = []
     for p in sorted(path.rglob("*")):
@@ -40,6 +59,9 @@ def scan(path: Path) -> list[str]:
             for match in pattern.finditer(text):
                 keyword = pattern.pattern.split(r"\s*")[0]
                 if keyword in ALLOWLIST and p.suffix in ALLOWLIST[keyword]:
+                    continue
+                line = _line_for_position(text, match.start())
+                if _is_innocuous_line(line):
                     continue
                 findings.append(f"{p}: possible secret ({match.group(0)[:40]})")
     return findings

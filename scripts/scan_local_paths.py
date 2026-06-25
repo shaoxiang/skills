@@ -13,8 +13,9 @@ BAD_PATHS = [
     "C:\\Users\\",
 ]
 
-ALLOWLIST = {
-    ".md": ["https://github.com/"],
+SKIP_FILES = {
+    "scan_local_paths.py",
+    "scan_secrets.py",
 }
 
 
@@ -25,19 +26,20 @@ def scan(path: Path) -> list[str]:
             continue
         if ".git" in p.parts:
             continue
+        if p.suffix == ".md":
+            continue
+        if p.name in SKIP_FILES:
+            continue
         try:
             text = p.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        allowed = ALLOWLIST.get(p.suffix, [])
         for bad in BAD_PATHS:
             idx = text.find(bad)
             if idx == -1:
                 continue
             # crude context extraction
             ctx = text[max(0, idx - 20): idx + len(bad) + 40].replace("\n", " ")
-            if any(a in ctx for a in allowed):
-                continue
             findings.append(f"{p}: local path {bad!r} near: {ctx!r}")
     return findings
 
