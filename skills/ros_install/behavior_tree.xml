@@ -1,0 +1,19 @@
+<root BTCPP_format="4">
+  <BehaviorTree ID="ROS Install">
+    <Sequence name="ros_install_sequence">
+      <CheckHostReady name="check_host_ready"/>
+      <DetectDistro name="detect_target_distro"/>
+      <PlanInstall name="plan_install_steps"/>
+      <SandboxValidate name="precheck_safety"/>
+      <ConfirmWithUser name="confirm_destructive_actions"/>
+      <ExecuteInstall name="execute_ros_install"/>
+      <VerifyOutcome name="verify_outcome"/>
+      <Fallback name="recovery_if_failed">
+        <MemoryRecall name="recall_prior_failure"/>
+        <HowAdvise name="runtime_intervention"/>
+        <RetrySkill name="retry_with_patch"/>
+      </Fallback>
+      <WriteMemory name="write_outcome"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

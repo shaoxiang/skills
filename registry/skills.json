@@ -1,0 +1,45 @@
+{
+  "schema_version": "rosclaw.skills_registry.v1",
+  "generated_at": "2026-06-25T06:40:41.357784Z",
+  "source_repo": "https://github.com/ros-claw/skills",
+  "skills": [
+    {
+      "name": "ros-claw/ros_install",
+      "display_name": "ROS Install",
+      "version": "0.1.0",
+      "description": "Install, verify, or repair a ROS / ROS 2 environment on the host workstation. Inspired by FishROS one-click installer.",
+      "category": "environment",
+      "robot_types": [
+        "universal"
+      ],
+      "compatible_robots": [
+        "host_workstation"
+      ],
+      "tags": [
+        "ros",
+        "ros2",
+        "host_workstation",
+        "install",
+        "environment",
+        "fishros-inspired"
+      ],
+      "official": true,
+      "installable": true,
+      "verification_status": "official_verified",
+      "source": {
+        "type": "github_subdir",
+        "repo": "https://github.com/ros-claw/skills",
+        "ref": "main",
+        "subdir": "skills/ros_install"
+      },
+      "files": {
+        "skill_yaml": "skills/ros_install/skill.yaml",
+        "skill_md": "skills/ros_install/SKILL.md",
+        "readme": "skills/ros_install/README.md"
+      },
+      "checksums": {
+        "package_sha256": "sha256:f6606699a01f3e3e7b733241fbe845db8d8fa0c53c16a237d32d5e1a7323936c"
+      }
+    }
+  ]
+}

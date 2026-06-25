@@ -1,0 +1,25 @@
+# Default parameters for ros_install
+
+install:
+  mode: native
+  distro: auto
+  allow_sudo: false
+  execute: false
+
+native:
+  apt_update: true
+  install_ros_dev_tools: true
+  initialize_rosdep: true
+  update_bashrc: true
+
+docker:
+  image: "ros:humble-ros-base"
+  pull_if_missing: true
+  run_privileged: false
+
+fishros:
+  url: "http://fishros.com/install"
+  allow_remote_script: false
+
+retry:
+  max_attempts: 2

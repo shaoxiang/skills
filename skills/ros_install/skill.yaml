@@ -1,0 +1,101 @@
+schema_version: rosclaw.skill.v1
+kind: Skill
+
+metadata:
+  name: ros_install
+  display_name: ROS Install
+  namespace: ros-claw
+  version: 0.1.0
+  stage: official_verified
+  candidate_id: null
+  category: environment
+  tags:
+    - ros
+    - ros2
+    - host_workstation
+    - install
+    - environment
+    - fishros-inspired
+  description: Install, verify, or repair a ROS / ROS 2 environment on the host workstation. Inspired by FishROS one-click installer.
+  license: Apache-2.0
+  authors:
+    - name: ROSClaw Team
+      url: https://github.com/ros-claw
+
+identity:
+  skill_id: ros-claw/ros_install
+  package_name: ros-claw/ros_install
+  canonical_uri: rosclaw://skills/ros-claw/ros_install
+  git_repo: https://github.com/ros-claw/skills
+  git_ref: main
+  source_subdir: skills/ros_install
+  git_commit: null
+
+task:
+  intent: Install, verify, or repair a ROS / ROS 2 environment on the host workstation.
+  natural_language:
+    en: Install ROS / ROS 2 on the host workstation, verify the installation, or repair an existing one.
+  input_contract:
+    required:
+      - host_state
+    optional:
+      - target_distro
+      - install_mode
+      - allow_sudo
+      - execute
+  output_contract:
+    success_condition:
+      - ros_setup_sourced == true
+      - roscli_available == true
+      - rosdep_initialized == true
+    artifacts:
+      - install_plan
+      - executed_commands
+      - verification_report
+
+execution:
+  entrypoint:
+    type: behavior_tree
+    file: behavior_tree.xml
+  runtime_adapter: rosclaw.runtime.skill_executor
+  policy:
+    type: hybrid
+    config: policies/policy.yaml
+  prompts:
+    planner: prompts/planner.md
+    executor: prompts/executor.md
+    verifier: prompts/verifier.md
+    recovery: prompts/recovery.md
+    safety: prompts/safety.md
+
+compatibility:
+  eurdf: e-urdf-compat.yaml
+  providers: providers.yaml
+  safety: safety.yaml
+
+evaluation:
+  dojo: dojo.yaml
+  darwin: darwin_eval.yaml
+  tests: tests/
+
+lineage:
+  file: lineage.yaml
+
+evidence:
+  directory: evidence/
+  latest_eval_report: null
+
+status:
+  promotion_state: validated
+  last_eval_passed: true
+  safe_to_run_on_real_robot: false
+  recommended_runtime_mode: dry_run
+  official: true
+  installable: true
+  verification_status: official_verified
+
+hub:
+  robot_types:
+    - universal
+  compatible_robots:
+    - host_workstation

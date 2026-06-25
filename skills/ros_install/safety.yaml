@@ -1,0 +1,44 @@
+schema_version: "rosclaw.safety.v1"
+
+runtime_mode:
+  default: "dry_run"
+  allowed:
+    - dry_run
+    - replay
+    - sandbox
+
+hard_constraints:
+  host:
+    require_explicit_execute_flag: true
+    require_user_confirmation_for_sudo: true
+    allow_system_modification_only_when_execute: true
+  action:
+    no_destructive_operations_without_backup: true
+  environment:
+    verify_os_is_ubuntu_lts_before_install: true
+
+robot:
+  min_battery_percent: null
+  require_estop_ready: false
+
+action:
+  max_linear_velocity_mps: null
+
+environment:
+  disallow_unknown_obstacles: false
+
+sandbox:
+  required_checks:
+    - os_compatibility_check
+    - distro_eol_check
+    - backup_existing_ros_check
+  block_on:
+    - unsupported_os
+    - eol_distro_selected
+    - existing_ros_without_backup
+
+failure_policy:
+  on_sandbox_block: "abort_and_explain"
+  on_low_confidence: "verify_or_abort"
+  on_repeated_failure: "write_memory_and_stop"
+  max_runtime_retries: 2

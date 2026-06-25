@@ -1,0 +1,27 @@
+schema_version: rosclaw.lineage.v1
+skill:
+  name: ros_install
+  current_version: 0.1.0
+  current_stage: validated
+origin:
+  created_by: rosclaw skill init
+  created_at: '2026-06-25T05:24:42.590865Z'
+  source_practice_sessions: []
+parents:
+  skill_versions: []
+  memory_records: []
+  how_interventions: []
+candidates:
+- id: candidate_0001
+  created_at: '2026-06-25T05:28:21.002243Z'
+  source: practice_mining
+  status: validated
+  eval_report: evidence/reports/candidate_0001_eval.json
+versions:
+- version: 0.1.0
+  candidate_id: candidate_0001
+  git_commit: null
+  package_hash: sha256:7894d7627ef4079e1c67bfbdb4188463ddcd487ff18760756aad4d18b09b6a31
+  promoted_at: '2026-06-25T05:28:33.450160Z'
+  promoted_by: local
+rollbacks: []

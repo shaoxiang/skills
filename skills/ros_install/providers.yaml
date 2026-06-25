@@ -1,0 +1,45 @@
+schema_version: "rosclaw.providers.v1"
+
+required_capabilities:
+  install.ros_distro_detector:
+    primary: "local_ros_distro_detector"
+    fallback: []
+    timeout_ms: 5000
+  install.apt_executor:
+    primary: "local_apt_executor"
+    fallback: []
+    timeout_ms: 300000
+  install.shell_executor:
+    primary: "local_shell_executor"
+    fallback: []
+    timeout_ms: 120000
+  install.distro_validator:
+    primary: "local_distro_validator"
+    fallback: []
+    timeout_ms: 5000
+
+providers:
+  local_ros_distro_detector:
+    type: "rosclaw_provider"
+    endpoint: "local://install/ros_distro_detector"
+    health_check: "rosclaw provider health local_ros_distro_detector"
+  local_apt_executor:
+    type: "rosclaw_provider"
+    endpoint: "local://install/apt_executor"
+    health_check: "rosclaw provider health local_apt_executor"
+  local_shell_executor:
+    type: "rosclaw_provider"
+    endpoint: "local://install/shell_executor"
+    health_check: "rosclaw provider health local_shell_executor"
+  local_distro_validator:
+    type: "rosclaw_provider"
+    endpoint: "local://install/distro_validator"
+    health_check: "rosclaw provider health local_distro_validator"
+
+routing_policy:
+  default: "capability_first"
+  prefer_local: true
+  require_health_check: false
+  fallback_on:
+    - timeout
+    - unavailable

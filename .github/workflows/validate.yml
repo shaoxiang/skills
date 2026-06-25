@@ -1,0 +1,65 @@
+name: Validate Skills
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "schemas/**"
+      - "scripts/**"
+      - ".github/workflows/validate.yml"
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema lxml requests pytest
+
+      - name: Scan secrets
+        run: |
+          python scripts/scan_secrets.py .
+
+      - name: Scan local paths
+        run: |
+          python scripts/scan_local_paths.py .
+
+      - name: Validate all skills
+        run: |
+          for d in skills/*; do
+            if [ -d "$d" ]; then
+              echo "Validating $d"
+              python scripts/validate_skill.py "$d"
+            fi
+          done
+
+      - name: Build registry
+        run: |
+          python scripts/build_registry.py
+
+      - name: Verify install dry-run
+        run: |
+          for d in skills/*; do
+            if [ -d "$d" ]; then
+              python scripts/verify_install.py "$d"
+            fi
+          done
+
+      - name: Upload registry artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: registry
+          path: registry/skills.json

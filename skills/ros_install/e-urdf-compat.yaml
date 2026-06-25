@@ -1,0 +1,25 @@
+schema_version: "rosclaw.eurdf_compat.v1"
+
+compatible_robots:
+  - robot: "host_workstation"
+    eurdf_profile: "ros-claw/host_workstation@>=1.0.0"
+    body_profile:
+      min_dof: 0
+    required_limbs: []
+    required_sensors:
+      - host_state
+    optional_sensors: []
+    required_frames:
+      - base_link
+    action_interfaces:
+      - host_command.v1
+    physical_limits:
+      min_battery_percent: 0
+    environment_assumptions:
+      os_family: ubuntu
+      supported_releases:
+        - focal
+        - jammy
+        - noble
+
+incompatible: []
