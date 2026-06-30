@@ -1,0 +1,24 @@
+schema_version: "rosclaw.eurdf_compat.v1"
+
+compatible_robots:
+  - robot: "inspire_rh56_right"
+    eurdf_profile: "ros-claw/inspire_rh56_right@>=1.0.0"
+    body_profile:
+      min_dof: 1
+      required_limbs: []
+      required_sensors:
+        - robot_state
+        - joint_states
+        - force_feedback
+        - temperature
+        - status_register
+      optional_sensors: []
+    required_frames:
+      - base_link
+    action_interfaces:
+      - body_command.v1
+    physical_limits:
+      min_battery_percent: 25
+    environment_assumptions: {}
+
+incompatible: []

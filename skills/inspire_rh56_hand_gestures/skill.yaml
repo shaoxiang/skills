@@ -1,0 +1,93 @@
+schema_version: "rosclaw.skill.v1"
+kind: "Skill"
+
+metadata:
+  name: "inspire_rh56_hand_gestures"
+  display_name: "Inspire RH56 Hand Gesture Countdown"
+  namespace: "ros-claw"
+  version: "0.3.0"
+  stage: "draft"
+  category: "manipulation"
+  tags:
+    - inspire_rh56_right
+    - dexterous_hand
+    - gesture
+    - physical-ai
+    - force_closed_loop
+    - contact_aware
+    - sim2real
+    - asymmetric_search
+    - promotion_gate
+    - body_cognition
+  description: |
+    Demonstrates Inspire Robots RH56 series dexterous hand control over
+    RS485/Modbus RTU. v2.1 adds strict force-closed-loop self-evolution:
+    FORCE_ACT baseline audit, exclusive contact-event schema, asymmetric
+    OK contact search, force-curve decay analysis, human/visual shape labels,
+    repeatability gating, and promotion of an ok_contact_safe_v2 policy.
+    The skill records practice episodes, updates body cognition, and reports
+    honest promotion/rejection status.
+  license: "MIT"
+  authors:
+    - name: "ROSClaw Test Team"
+      url: "https://github.com/ros-claw"
+
+identity:
+  skill_id: "ros-claw/inspire_rh56_hand_gestures"
+  package_name: "ros-claw/inspire_rh56_hand_gestures"
+  canonical_uri: "rosclaw://skills/ros-claw/inspire_rh56_hand_gestures"
+  git_repo: "https://github.com/ros-claw/skills"
+  git_commit: null
+
+task:
+  intent: "inspire_rh56_hand_gestures"
+  natural_language:
+    en: "Execute the inspire_rh56_hand_gestures skill."
+  input_contract:
+    required:
+      - robot_state
+    optional: []
+  output_contract:
+    success_condition:
+      - "task_completed == true"
+    artifacts:
+      - trace
+      - runtime_events
+
+execution:
+  entrypoint:
+    type: "behavior_tree"
+    file: "behavior_tree.xml"
+  runtime_adapter: "rosclaw.runtime.skill_executor"
+  policy:
+    type: "hybrid"
+    config: "policies/policy.yaml"
+  prompts:
+    planner: "prompts/planner.md"
+    executor: "prompts/executor.md"
+    verifier: "prompts/verifier.md"
+    recovery: "prompts/recovery.md"
+    safety: "prompts/safety.md"
+
+compatibility:
+  eurdf: "e-urdf-compat.yaml"
+  providers: "providers.yaml"
+  safety: "safety.yaml"
+
+evaluation:
+  dojo: "dojo.yaml"
+  darwin: "darwin_eval.yaml"
+  tests: "tests/"
+
+lineage:
+  file: "lineage.yaml"
+
+evidence:
+  directory: "evidence/"
+  latest_eval_report: "evidence/reports/RH56_FORCE_CLOSED_LOOP_V2_1_REPORT.md"
+
+status:
+  promotion_state: "promoted"
+  last_eval_passed: true
+  safe_to_run_on_real_robot: true
+  recommended_runtime_mode: "sandbox_first"

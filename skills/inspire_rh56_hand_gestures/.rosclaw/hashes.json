@@ -1,0 +1,29 @@
+{
+  "schema_version": "rosclaw.hashes.v1",
+  "files": {
+    "CHANGELOG.md": "sha256:8d1f6f6171a3c36bbed9aaca22ea9e6cf546e817982a1be45291e80a998d36cb",
+    "README.md": "sha256:3d207a69397a978d2e20eaefbadfb01f6608f124d4e4a6767e529a8bf83354ad",
+    "SKILL.md": "sha256:0002afa675a668584c73060343b30245d52419c84921329d88897f20b6fd9125",
+    "behavior_tree.xml": "sha256:3e857834e3919a95253c7ef54f8b63854ccfbeaf72488f5cb9fb9e909fa1f212",
+    "darwin_eval.yaml": "sha256:fb22c4df229976a46d926d2006788e6255c74f5579d7210ad3a69e07dd905afb",
+    "dojo.yaml": "sha256:178a44fca2a06e0a3ed0b5f628feaf892f0ebea0c1204c0b750faf2c38cfd903",
+    "e-urdf-compat.yaml": "sha256:1828bf4e691e3189068ac871caf1dd203182bdd4000d0f1611312581ff911bd0",
+    "evidence/reports/.gitkeep": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/reports/RH56_FORCE_CLOSED_LOOP_V2_1_REPORT.md": "sha256:5589f6375ee6f9b085c6178198405f0e15aff700bd9853bea837a634d15fe72c",
+    "evidence/reports/RH56_FORCE_CLOSED_LOOP_V2_REPORT.md": "sha256:5da3dc8c5c95cf8e157560793b71b8887a1c3ee2500cce395b8bfb678d55b078",
+    "lineage.yaml": "sha256:46b1b365b056ffc3c6c9a22b9b0864c35978409586f40e586dfdc052a26d6d0a",
+    "policies/checkpoints/.gitkeep": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "policies/ok_contact_safe_v2.yaml": "sha256:0078762b212212d0f04c6af2ab5a7669c19eb7e5c264e33e727bd6ba83f4a639",
+    "policies/params/default.yaml": "sha256:e9296de5d85c28ee24fbab234fce92b09618bf3a3b2c1c7e7328b7a652d82490",
+    "policies/policy.yaml": "sha256:e0d0a9c2516e9bc6a092033521488bb69759c643aa54cb3cddd23d79a6f2caab",
+    "prompts/executor.md": "sha256:f5eeff33a575cb5deb414baa75eb52a674cfdb2ec1667d5e1acf96c4f3a637fd",
+    "prompts/planner.md": "sha256:c3b40d3c9e9e20b16421719900f33df59232d828c59160f11ba5629246297cb1",
+    "prompts/recovery.md": "sha256:bb22461a0aaa5ca256486785d4fcdcf5fadb213c322d93a1dc28fad89cc51861",
+    "prompts/safety.md": "sha256:b2a1a48921ccffb65be43417bd6aaefec75daee435b6079aeafad9170de0d579",
+    "prompts/verifier.md": "sha256:8aaaa0216d3f1423b3826aa22feb6beb1a5f5ccb54b8ef9dc0973614fc78256a",
+    "providers.yaml": "sha256:f80073fc356f66daa3e3e46a851dfa4dd2784ece1abf14feffb93b07ca334ea9",
+    "safety.yaml": "sha256:01ca9fa2024ac6ef0b796d891756b809512af6de3088a0650f45f7c9dcb7899a",
+    "skill.yaml": "sha256:0558c9be50c4e7778977395987775d3bbc41aab973ca0ea0d5c0bc7b3f985658"
+  },
+  "package_hash": "sha256:8e8bda1ebeb2ff9259e73d111cc872a1f02a52d46dbfa4b296ad691a5bb7f91d"
+}
