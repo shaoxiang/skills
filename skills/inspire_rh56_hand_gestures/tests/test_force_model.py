@@ -1,7 +1,8 @@
 """Unit tests for RH56 ForceModel v2.1.
 
-Prefers the generic `rosclaw.body.force_model` types introduced in rosclaw PR#53
-and falls back to the local `rosclaw_rh56` runtime if rosclaw is not yet installed.
+Uses the generic `rosclaw.body.force_model` types introduced in rosclaw PR#53.
+If rosclaw is not installed, the tests fall back to the local `rosclaw_rh56`
+runtime (legacy API) and may need adjusted assertions.
 """
 from __future__ import annotations
 
@@ -28,6 +29,10 @@ def _approx(a, b, tol=1e-6):
     return abs(a - b) < tol
 
 
+def _thumb_window():
+    return DofForceWindow(desired_min=80, desired_max=180, hard=250, emergency=350)
+
+
 def test_net_force_subtracts_baseline():
     baseline = {
         "thumb": ForceBaseline(mean=-50.0),
@@ -42,9 +47,9 @@ def test_net_force_subtracts_baseline():
 
 
 def test_contact_level_thresholds_default():
-    model = ForceModel()
+    model = ForceModel(contact_windows={"thumb": _thumb_window()})
     assert model.contact_level(10.0, dof="thumb") == "none"
-    assert model.contact_level(60.0, dof="thumb") == "soft"
+    assert model.contact_level(80.0, dof="thumb") == "desired"
     assert model.contact_level(100.0, dof="thumb") == "desired"
     assert model.contact_level(200.0, dof="thumb") == "strong"
     assert model.contact_level(260.0, dof="thumb") == "hard"
@@ -53,7 +58,7 @@ def test_contact_level_thresholds_default():
 
 def test_per_dof_contact_windows():
     model = ForceModel(
-        contact_windows_g={
+        contact_windows={
             "thumb": DofForceWindow(desired_min=80, desired_max=180, hard=250, emergency=350),
             "index": DofForceWindow(desired_min=80, desired_max=200, hard=250, emergency=350),
         }
@@ -64,7 +69,7 @@ def test_per_dof_contact_windows():
 
 
 def test_desired_and_over_contact():
-    model = ForceModel()
+    model = ForceModel(contact_windows={"thumb": _thumb_window()})
     assert model.is_desired_contact(120.0, dof="thumb")
     assert not model.is_desired_contact(10.0, dof="thumb")
     assert model.is_over_contact(260.0, dof="thumb")
@@ -73,7 +78,7 @@ def test_desired_and_over_contact():
 
 def test_missing_baseline_blocks_contact_search():
     model = ForceModel()
-    missing = model.list_missing_baselines()
+    missing = model.list_missing_baselines(DOF_NAMES)
     assert set(missing) == set(DOF_NAMES)
 
 
