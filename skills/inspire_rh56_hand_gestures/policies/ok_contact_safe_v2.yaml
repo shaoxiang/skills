@@ -1,0 +1,43 @@
+policy_id: ok_contact_safe_v2
+body_id: inspire_rh56_right_dev_ttyUSB0
+version: 0.3.0
+status: pending_eval
+
+target_pose:
+  thumb: 430
+  index: 430
+  thumb_rot: 300
+
+execution:
+  path: index_first
+  speed: 200
+  force: 250
+  dwell_s: 1.0
+  start_from_open: true
+
+force_window:
+  thumb: [80, 180]
+  index: [80, 200]
+  thumb_rot: [40, 160]
+
+safety:
+  max_force_net_g: 250
+  max_temp_c: 50
+  stop_on_error: true
+  stop_on_status_protection: true
+  backoff_on_over_contact: true
+
+evidence:
+  repeatability_rounds: null
+  contact_detected_rate: null
+  thumb_mean_force_net_g: null
+  index_mean_force_net_g: null
+  thumb_rot_mean_force_net_g: null
+  ok_shape_score_mean: null
+  source_episodes: []
+
+limitations:
+  - valid_only_for_body_id_inspire_rh56_right_dev_ttyUSB0
+  - requires_force_baseline
+  - requires_start_from_open
+  - pending_promotion_gate_evaluation

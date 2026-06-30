@@ -1,0 +1,134 @@
+count: 21
+episodes:
+- ok_force_search_1782739842
+- ok_force_search_1782739921
+- ok_force_search_1782739986
+- ok_force_search_1782740307_step000
+- ok_force_search_1782740307_step001
+- ok_force_search_1782740307_step002
+- ok_force_search_1782740307_step003
+- ok_force_search_1782740307_step004
+- ok_force_search_1782740307_step005
+- ok_force_search_1782740307_step006
+- ok_force_search_1782740307_step007
+- ok_force_search_1782740307_step008
+- ok_force_search_1782740307_step009
+- ok_force_search_1782740307_step010
+- ok_force_search_1782740307_step011
+- ok_force_search_1782740307_step012
+- ok_force_search_1782740307_step013
+- ok_force_search_1782740307_step014
+- ok_force_search_1782740307_step015
+- ok_force_search_1782740307_step016
+- ok_force_search_1782740307_step017
+events:
+  desired_contact: 13
+  early_contact: 1
+  no_contact: 18
+  self_collision: 1
+force_net_g:
+  little:
+    mean: 6.0
+    min: 0.0
+    max: 7.0
+    std: 2.5099800796022267
+  ring:
+    mean: 3.4761904761904763
+    min: 0.0
+    max: 5.0
+    std: 1.4703417160322845
+  middle:
+    mean: 2.5714285714285716
+    min: 0.0
+    max: 3.0
+    std: 1.0757057484009547
+  index:
+    mean: 18.333333333333332
+    min: -10.0
+    max: 233.0
+    std: 68.37860289106038
+  thumb:
+    mean: 93.28571428571429
+    min: 43.0
+    max: 236.0
+    std: 42.01921329242475
+  thumb_rot:
+    mean: 33.80952380952381
+    min: 12.0
+    max: 210.0
+    std: 48.57943911534906
+poses:
+- index: 447
+  thumb: 432
+  thumb_rot: 237
+- index: 441
+  thumb: 423
+  thumb_rot: 252
+- index: 454
+  thumb: 460
+  thumb_rot: 266
+- index: 702
+  thumb: 778
+  thumb_rot: 679
+- index: 614
+  thumb: 619
+  thumb_rot: 476
+- index: 621
+  thumb: 629
+  thumb_rot: 384
+- index: 635
+  thumb: 639
+  thumb_rot: 384
+- index: 645
+  thumb: 650
+  thumb_rot: 384
+- index: 625
+  thumb: 621
+  thumb_rot: 369
+- index: 632
+  thumb: 641
+  thumb_rot: 369
+- index: 646
+  thumb: 648
+  thumb_rot: 369
+- index: 657
+  thumb: 661
+  thumb_rot: 369
+- index: 635
+  thumb: 633
+  thumb_rot: 355
+- index: 643
+  thumb: 651
+  thumb_rot: 355
+- index: 655
+  thumb: 660
+  thumb_rot: 355
+- index: 635
+  thumb: 632
+  thumb_rot: 339
+- index: 646
+  thumb: 649
+  thumb_rot: 339
+- index: 653
+  thumb: 659
+  thumb_rot: 339
+- index: 634
+  thumb: 631
+  thumb_rot: 326
+- index: 646
+  thumb: 648
+  thumb_rot: 326
+- index: 653
+  thumb: 659
+  thumb_rot: 326
+best_pose:
+  index: 635
+  thumb: 639
+  thumb_rot: 384
+best_force_net_g:
+  little: 7.0
+  ring: 4.0
+  middle: 3.0
+  index: -3.0
+  thumb: 80.0
+  thumb_rot: 17.0

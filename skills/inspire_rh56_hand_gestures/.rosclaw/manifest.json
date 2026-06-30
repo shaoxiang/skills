@@ -1,0 +1,40 @@
+{
+  "schema_version": "rosclaw.skill_manifest.v1",
+  "name": "ros-claw/inspire_rh56_hand_gestures",
+  "version": "0.3.0",
+  "stage": "draft",
+  "package_hash": "sha256:0983aa8c0a9303fb576f32964e2b32e50377f458f5e6f111167171b903cdc622",
+  "created_at": "2026-06-30T10:51:03.516129Z",
+  "entrypoint": "behavior_tree.xml",
+  "required_files": [
+    "skill.yaml",
+    "README.md",
+    "behavior_tree.xml",
+    "providers.yaml",
+    "e-urdf-compat.yaml",
+    "safety.yaml",
+    "dojo.yaml",
+    "darwin_eval.yaml",
+    "lineage.yaml"
+  ],
+  "hub": {
+    "category": "manipulation",
+    "robot_types": [],
+    "compatible_robots": [
+      "inspire_rh56_right"
+    ],
+    "tags": [
+      "inspire_rh56_right",
+      "dexterous_hand",
+      "gesture",
+      "physical-ai",
+      "force_closed_loop",
+      "contact_aware",
+      "sim2real",
+      "asymmetric_search",
+      "promotion_gate",
+      "body_cognition"
+    ],
+    "visibility": "private"
+  }
+}
