@@ -1,0 +1,52 @@
+# Rock-Paper-Scissors demo runtime configuration.
+demo:
+  name: "RH56 Rock Paper Scissors"
+  mode: "mock"  # mock | camera-only | hand-test | full
+  rounds: 10
+  auto: false
+
+commit:
+  # Robot choice is generated and hashed before human gesture capture.
+  algorithm: "sha256"
+  nonce_bytes: 8
+
+countdown:
+  labels: ["3", "2", "1"]
+  gestures: ["count3", "count2", "count1"]
+  step_s: 0.6
+
+capture:
+  window_s: 0.0
+  fps: 30
+  min_confidence: 0.65
+  majority_ratio: 0.55
+  vote_window_size: 40
+
+hand:
+  controller: "rh56"  # mock | rh56
+  port: "/dev/ttyUSB0"
+  device_id: 2
+  baudrate: 115200
+  timeout_s: 0.3
+  default_speed: 600
+  default_force: 300
+  safe_mode_failures: 3
+
+camera:
+  source: "ros2"  # mock | realsense | usb | ros2
+  topic: "/camera/d435i/color/image_raw"
+  width: 640
+  height: 480
+  fps: 30
+
+logging:
+  root_dir: "~/.rosclaw/practice/runs/rh56_rps"
+  save_frames: true
+  save_telemetry: true
+
+safety:
+  max_force_g: 500
+  max_current_ma: 900
+  max_temp_c: 65
+  safe_open_on_error: true
+  consecutive_failure_limit: 3

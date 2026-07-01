@@ -1,13 +1,13 @@
 {
   "schema_version": "rosclaw.skills_registry.v1",
-  "generated_at": "2026-06-30T10:51:31.424974Z",
+  "generated_at": "2026-07-01T10:37:23.531954Z",
   "source_repo": "https://github.com/ros-claw/skills",
   "skills": [
     {
       "name": "ros-claw/inspire_rh56_hand_gestures",
       "display_name": "Inspire RH56 Hand Gesture Countdown",
-      "version": "0.3.0",
-      "description": "Demonstrates Inspire Robots RH56 series dexterous hand control over\nRS485/Modbus RTU. v2.1 adds strict force-closed-loop self-evolution:\nFORCE_ACT baseline audit, exclusive contact-event schema, asymmetric\nOK contact search, force-curve decay analysis, human/visual shape labels,\nrepeatability gating, and promotion of an ok_contact_safe_v2 policy.\nThe skill records practice episodes, updates body cognition, and reports\nhonest promotion/rejection status.\n",
+      "version": "0.3.1",
+      "description": "Demonstrates Inspire Robots RH56 series dexterous hand control over\nRS485/Modbus RTU. v2.1 adds strict force-closed-loop self-evolution:\nFORCE_ACT baseline audit, exclusive contact-event schema, asymmetric\nOK contact search, force-curve decay analysis, human/visual shape labels,\nrepeatability gating, and promotion of an ok_contact_safe_v2 policy.\nThe skill records practice episodes, updates body cognition, and reports\nhonest promotion/rejection status.\nAlso includes an example Rock-Paper-Scissors game where the hand counts\ndown 3-2-1 with its own gestures and plays against a human hand detected\nvia a ROS 2 / RealSense camera.\n",
       "category": "manipulation",
       "robot_types": [
         "universal"
@@ -25,7 +25,9 @@
         "sim2real",
         "asymmetric_search",
         "promotion_gate",
-        "body_cognition"
+        "body_cognition",
+        "rps_demo",
+        "rock_paper_scissors"
       ],
       "official": true,
       "installable": true,
@@ -42,7 +44,7 @@
         "readme": "skills/inspire_rh56_hand_gestures/README.md"
       },
       "checksums": {
-        "package_sha256": "sha256:515c59806810434ce7a4d7794ede105906314dc013ed84bbbb2f43504c622fe9"
+        "package_sha256": "sha256:e24e65221749553940a3ef647096b7c604f0b2e7fd8c0a2b9b433f46ba58a118"
       }
     },
     {

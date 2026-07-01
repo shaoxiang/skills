@@ -4,6 +4,8 @@ A ROSClaw skill that demonstrates dexterous-hand gestures on the **Inspire Robot
 
 It runs a countdown sequence — **five → four → three → two → one → OK** — and ends with a force-feedback-verified OK pose. v2.1 fixes the countdown rhythm, moves thumb and index together into the final OK pose, and promotes a repeatable, safe OK contact policy.
 
+A fun **Rock-Paper-Scissors (RPS)** example is also included: see `examples/rh56_rps/`. The robot hand counts down **3 → 2 → 1**, then reveals its move while MediaPipe reads the human hand over a ROS 2 camera topic.
+
 ## What it does
 
 1. Connects to the RH56 hand on `/dev/ttyUSB0` (slave id 2, 115200 baud, Modbus RTU).
