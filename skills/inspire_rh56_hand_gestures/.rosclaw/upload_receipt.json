@@ -1,8 +1,8 @@
 {
-  "uploaded_at": "2026-06-30T10:51:17.844961Z",
+  "uploaded_at": "2026-07-01T10:19:52.776704Z",
   "hub_base_url": "https://www.rosclaw.io",
   "skill_name": "ros-claw/inspire_rh56_hand_gestures",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "visibility": "private",
   "api_response": {
     "id": "6c2a3a2c-30f2-439e-b692-b4ea0867d697",

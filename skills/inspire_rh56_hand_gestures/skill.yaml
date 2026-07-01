@@ -5,7 +5,7 @@ metadata:
   name: "inspire_rh56_hand_gestures"
   display_name: "Inspire RH56 Hand Gesture Countdown"
   namespace: "ros-claw"
-  version: "0.3.0"
+  version: "0.3.1"
   stage: "draft"
   category: "manipulation"
   tags:
@@ -19,6 +19,8 @@ metadata:
     - asymmetric_search
     - promotion_gate
     - body_cognition
+    - rps_demo
+    - rock_paper_scissors
   description: |
     Demonstrates Inspire Robots RH56 series dexterous hand control over
     RS485/Modbus RTU. v2.1 adds strict force-closed-loop self-evolution:
@@ -27,6 +29,9 @@ metadata:
     repeatability gating, and promotion of an ok_contact_safe_v2 policy.
     The skill records practice episodes, updates body cognition, and reports
     honest promotion/rejection status.
+    Also includes an example Rock-Paper-Scissors game where the hand counts
+    down 3-2-1 with its own gestures and plays against a human hand detected
+    via a ROS 2 / RealSense camera.
   license: "MIT"
   authors:
     - name: "ROSClaw Test Team"
